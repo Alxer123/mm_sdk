@@ -20,13 +20,13 @@ public:
     }
 
     float GetHealth() {
-        return *(float*)((uintptr_t)this + 0x184);
+        CHealthBlockModel* pHealthBlock = GetHealthBlockModel();
+        if (pHealthBlock != nullptr) {
+            return pHealthBlock->GetMasterHealth();
+        }
     }
 
     void SetHealth(float fHealth) {
-        *(float*)((uintptr_t)this + 0x184) = fHealth; // Current Health
-        *(float*)((uintptr_t)this + 0x188) = fHealth; // Target/UI Health
-
         CHealthBlockModel* pHealthBlock = GetHealthBlockModel();
         if (pHealthBlock != nullptr) {
             pHealthBlock->SetMasterHealth(fHealth);
