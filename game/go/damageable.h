@@ -2,6 +2,7 @@
 
 #include "physgo.h"
 #include "mm/game/events.h"
+#include "mm/game/go/healthblock.h"
 
 class CDamageable : public CPhysicsGameObject, public NEvent::CEventHandler
 {
@@ -14,6 +15,10 @@ public:
     virtual void OnDestroyed(CHashString) = 0;
     virtual void SendOnDestroyEvent(CHashString) = 0;
 
+    CHealthBlockModel* GetHealthBlockModel() {
+        return *(CHealthBlockModel**)((uintptr_t)this + 0x1A10);
+    }
+
     float GetHealth() {
         return *(float*)((uintptr_t)this + 0x184);
     }
@@ -21,6 +26,11 @@ public:
     void SetHealth(float fHealth) {
         *(float*)((uintptr_t)this + 0x184) = fHealth; // Current Health
         *(float*)((uintptr_t)this + 0x188) = fHealth; // Target/UI Health
+
+        CHealthBlockModel* pHealthBlock = GetHealthBlockModel();
+        if (pHealthBlock != nullptr) {
+            pHealthBlock->SetMasterHealth(fHealth);
+        }
     }
     
     void SetInvulnerable(bool invulnerable) { m_Invulnerable = invulnerable; }
