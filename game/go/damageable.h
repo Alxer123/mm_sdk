@@ -17,8 +17,6 @@ public:
     float GetHealth() {
         return *(float*)((uintptr_t)this + 0x184);
     }
-    
-    void SetHealth(float fHealth);
 
     void SetHealth(float fHealth) {
         *(float*)((uintptr_t)this + 0x184) = fHealth; // Current Health
