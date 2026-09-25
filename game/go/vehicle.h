@@ -3,6 +3,8 @@
 
 #include "damageable.h"
 
+class CCharacter;
+
 class __declspec(align(16)) CVehicle : public CDamageable {
 public:
 

@@ -25,8 +25,9 @@ namespace NCharacterSystem
 class CCharacter : public CDamageable, public NCharacterSystem::CCharacterBase, public IPhysicsGameObjectListenable
 {
 public:
-	// SUS
-
+	CVector3f* GetPosition() {
+		return (CVector3f*)((uintptr_t)this + 0x208);
+	}
 
 	CMETHODV(0x140139A20, 0x141CD69B0, void, ForceNeutralState())
 	CMETHODV(0x1400EE860, 0x141C82910, CVehicle*, GetVehiclePtr())
