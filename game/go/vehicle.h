@@ -7,9 +7,6 @@ class CCharacter;
 
 class __declspec(align(16)) CVehicle : public CDamageable {
 public:
-
-
-
 	virtual void StopPartAnimation(unsigned int) = 0;
 	virtual void SetWheelSkew(int, float) = 0;
 	virtual void UpdatePfxPreSim() = 0;
@@ -44,4 +41,20 @@ public:
 	virtual const CVector3f*  GetVelocityLastFrame() = 0;
 	virtual void GetAcceleration(CVector3f*) = 0;
 	virtual const CHashString*  GetState() = 0;
+
+
+	char pad_1C0[8];
+	float opacity;
+	char pad_1CC[57];
+	bool driving_enabled;
+	char pad_206[463];
+	bool engine_running;
+	char pad_3D6[2];
+	bool visibile;
+	char pad_3D9[1];
+	bool enabled;
+	char pad_3DB[5];
+	bool is_occupied;
+	bool is_occupied_by_player;
+	char pad_3E2[15150];
 };

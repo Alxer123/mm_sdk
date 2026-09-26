@@ -17,6 +17,10 @@ namespace NCharacterSystem
 	class CCharacterBase : public IPfxCharacter, public CRtti
 	{
 	public:
+		char pad_10[8];				//0x10
+		CMatrix4f matrix;			//0x18
+		CMatrix4f previous_matrix;	//0x58
+		char pad_98[344];			//0x98
 
 		CMETHOD(0x14063F940, 0x142287340, void, RotateInstantly(float yaw), yaw)
 	};

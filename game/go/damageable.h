@@ -35,7 +35,11 @@ public:
     
     void SetInvulnerable(bool invulnerable) { m_Invulnerable = invulnerable; }
 
-    bool m_Destroyed;
-    bool m_Invulnerable;
-    char unk234[214];
+    bool m_Destroyed;       //0xE8
+    bool m_Invulnerable;    //0xE9 
+    char pad_EA[150];       //0xEA
+    float max_health;       //0x180
+    float current_health;   //0x184
+    float last_health;      //0x188
+    char pad_18C[52];       //0x18C
 };
