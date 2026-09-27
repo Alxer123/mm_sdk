@@ -36,8 +36,6 @@ namespace NEvent
         {
             return *(CEventSystem**)(ADDRESS(0x141715B58, 0x1417F4ED8));
         }
-
-        CMETHOD(0x1409C47C0, 0x142990C90, void, SendEvent(const EventID* event_ids, uint32_t event_count, const void* args), event_ids, event_count, args)
     };
     
     class CEventImpl { };
@@ -57,7 +55,8 @@ namespace NEvent
     {
     public:
 
-        static void SendMsg(const char* a);
+        static SMETHOD(0x140007CB0, 0x141B74930, void, SendMsg(const char* a), a)
+
         static void SendMsg(uint32_t hash);
 
         static void SendMsg(const char* event_name, class CGameObject* t1);
