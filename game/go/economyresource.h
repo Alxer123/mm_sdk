@@ -2,8 +2,9 @@
 
 #include <cstdint>
 #include <mm/hookmgr.h>
+#include "go.h"
 
-class CEconomyResource
+class CEconomyResource : public CGameObject
 {
 public:
 	enum EconomyResourceType : uint16_t
@@ -19,7 +20,4 @@ public:
         Shiv = 8
 	};
 
-    static SMETHOD(0x1401E8060, 0x141D9B690, void, SetResourceSilent(uint16_t resourceId, uint64_t unk, bool flag, int amount), resourceId, unk, flag, amount)
-
-    static SMETHOD(0x1401E8300, 0x1431CB4D0, void, SetResourceWithUI(uint16_t resourceId, uint64_t unk, bool flag, int amount), resourceId, unk, flag, amount)
 };

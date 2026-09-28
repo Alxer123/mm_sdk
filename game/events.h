@@ -57,7 +57,7 @@ namespace NEvent
 
         static SMETHOD(0x140007CB0, 0x141B74930, void, SendMsg(const char* a), a)
 
-        static void SendMsg(uint32_t hash);
+        static SMETHOD(0x1401C9D20, 0x141D76550, void, SendMsg(uint32_t hash), hash)
 
         static void SendMsg(const char* event_name, class CGameObject* t1);
     };

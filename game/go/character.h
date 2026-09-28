@@ -1,6 +1,7 @@
 #pragma once
 
 #include "damageable.h"
+#include "vehicle.h"
 
 class CVehicle;
 
@@ -31,6 +32,27 @@ class CCharacter : public CDamageable, public NCharacterSystem::CCharacterBase, 
 public:
 	CVector3f* GetPosition() {
 		return (CVector3f*)((uintptr_t)this + 0x208);
+	}
+
+	void Teleport(CVector3f targetCoords)
+	{
+		CMatrix4f targetMatrix;
+		CVehicle* tVehicle = this->GetVehiclePtr();
+		CGameObject* pTargetGO = nullptr;
+
+		if (tVehicle) {
+			pTargetGO = tVehicle;
+			tVehicle->SetVelocity(CVector3f()); // Stop momentum
+			tVehicle->GetTransform(&targetMatrix);
+		}
+		else {
+			pTargetGO = this;
+			this->ForceNeutralState(); // Safe state
+			this->GetTransform(&targetMatrix);
+		}
+
+		targetMatrix.SetPosition(targetCoords);
+		pTargetGO->SetTransform(&targetMatrix);
 	}
 
 	CMETHODV(0x140139A20, 0x141CD69B0, void, ForceNeutralState())

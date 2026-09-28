@@ -17,5 +17,5 @@ public:
 	mm::std::vector<boost::shared_ptr<CPlayer>> player;		//0x37A8
 	char pad_37B8[840];										//0x37B8
 	
-	CMETHODV(0x1400FBD30, 0x141C91250, CCharacter*, GetPlayerCharacter())
+	CMETHODV(0x1400FBF10, 0x141C91250, CCharacter*, GetPlayerCharacter()) //Updated
 };

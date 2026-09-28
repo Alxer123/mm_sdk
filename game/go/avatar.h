@@ -2,7 +2,7 @@
 
 #include "character.h"
 
-class CAvatar
+class CAvatar : public CRtti
 {
 public:
     virtual void _vfunc_0() = 0;
