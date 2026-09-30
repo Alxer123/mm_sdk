@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include "mm/mm.h"
 
 namespace NEvent
 {
@@ -17,14 +18,14 @@ namespace NEvent
         TYPE_ID_OPTION_MASK = 128
     };
     
-    struct EventID
+    struct CEventID
     {
         CHashString hash;
         CHashString m_namespace;
 
-        EventID() = default;
+        CEventID() = default;
 
-        EventID(CHashString h, CHashString ns) : hash(h), m_namespace(ns) {}
+        CEventID(CHashString h, CHashString ns) : hash(h), m_namespace(ns) {}
     };
 
     class CEventSystem
@@ -32,10 +33,7 @@ namespace NEvent
     public:
         virtual ~CEventSystem() = 0;
 
-        static CEventSystem* GetInstance()
-        {
-            return *(CEventSystem**)(ADDRESS(0x141715B58, 0x1417F4ED8));
-        }
+        char pad_0x8[1548416];      //0x8
     };
     
     class CEventImpl { };
@@ -45,13 +43,13 @@ namespace NEvent
         unsigned __int16* m_EventImpl;
     };
 
-    struct BaseSendEvent
+    struct CBaseSendEvent
     {
         CEventBase* event_base;
     };
 
     template<typename arg0 = void, typename arg1 = void, typename arg2 = void, typename arg3 = void, typename arg4 = void>
-    class CSendEvent : public BaseSendEvent
+    class CSendEvent : public CBaseSendEvent
     {
     public:
 
@@ -81,3 +79,11 @@ namespace NEvent
         virtual void HandleEvent(NEvent::CEventImpl const* event, void* data) {};
     };
 }
+
+MMASSERT(NEvent::CEventHandler, 0x10);
+MMASSERT(NEvent::CBaseSendEvent, 0x8);
+MMASSERT(NEvent::CEventBase, 0x8);
+MMASSERT(NEvent::CEventHandler, 0x10);
+MMASSERT(NEvent::CEventID, 0x8);
+MMASSERT(NEvent::CEventSystem, 0x17A088);
+

@@ -19,3 +19,5 @@ public:
 	
 	CMETHODV(0x1400FBF10, 0x141C91250, CCharacter*, GetPlayerCharacter()) //Updated
 };
+
+//MMASSERT(CCharacterManager, 0x3B00);

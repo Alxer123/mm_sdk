@@ -32,3 +32,5 @@ public:
     virtual void NotifyOutOfBroadphase() = 0;
     virtual void OnOutOfBroadphase() = 0;
 };
+
+MMASSERT(IPfxGameObject, 0x8);

@@ -30,6 +30,11 @@ namespace NCharacterSystem
 class CCharacter : public CDamageable, public NCharacterSystem::CCharacterBase, public IPhysicsGameObjectListenable
 {
 public:
+	virtual ~CCharacter() = 0;
+	virtual IPfxInstance get_pfx_instance() = 0;
+
+	char pad_3B0[12022];
+
 	CVector3f* GetPosition() {
 		return (CVector3f*)((uintptr_t)this + 0x208);
 	}
@@ -58,3 +63,6 @@ public:
 	CMETHODV(0x140139A20, 0x141CD69B0, void, ForceNeutralState())
 	CMETHODV(0x1400EE860, 0x141C82910, CVehicle*, GetVehiclePtr())
 };
+
+MMASSERT(NCharacterSystem::CCharacterBase, 0x1F0);
+MMASSERT(CCharacter, 0x32B0);

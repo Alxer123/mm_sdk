@@ -43,3 +43,5 @@ public:
     float last_health;      //0x188
     char pad_18C[52];       //0x18C
 };
+
+MMASSERT(CDamageable, 0x1C0);

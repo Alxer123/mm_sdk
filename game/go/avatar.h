@@ -18,3 +18,5 @@ public:
     boost::weak_ptr<CAvatar> weak_this;      //0x18
     char pad_28[48];                        //0x28
 };
+
+MMASSERT(CAvatar, 0x58);

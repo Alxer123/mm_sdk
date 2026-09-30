@@ -58,3 +58,5 @@ const struct CRttiTypeId
 {
 	unsigned int m_Hash;
 };
+
+MMASSERT(CRtti, 0x8);
