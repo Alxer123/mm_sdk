@@ -5,6 +5,18 @@
 
 class CCharacter;
 
+class __declspec(align(8)) CArcadeVehicleEngine
+{
+public:
+	char pad_00[48];
+
+
+
+	CMETHODV(0x1405728F0, 0x0, float, GetTopSpeed());
+	CMETHOD(0x140572900, 0x142493370, void, SetTopSpeed(float topSpeed), topSpeed)
+};
+
+
 class __declspec(align(16)) CVehicle : public CDamageable {
 public:
 	virtual void StopPartAnimation(unsigned int) = 0;
@@ -43,18 +55,27 @@ public:
 	virtual const CHashString*  GetState() = 0;
 
 
-	char pad_1C0[8];
-	float opacity;
-	char pad_1CC[57];
-	bool driving_enabled;
-	char pad_206[463];
-	bool engine_running;
-	char pad_3D6[2];
-	bool visibile;
-	char pad_3D9[1];
-	bool enabled;
-	char pad_3DB[5];
-	bool is_occupied;
-	bool is_occupied_by_player;
-	char pad_3E2[15150];
+	char pad_1C0[8];				//0x1C0
+	float opacity;					//0x1C8
+	char pad_1CC[4];				//0x1CC
+	CArcadeVehicleEngine m_AVEngine;//0x1D0
+	char pad_200[5];				//0x200
+	bool driving_enabled;			//0x205
+	char pad_206[463];				//0x206
+	bool engine_running;			//0x3D5
+	char pad_3D6[2];				//0x3D6
+	bool visibile;					//0x3D8
+	char pad_3D9[1];				//0x3D9
+	bool enabled;					//0x3DA
+	char pad_3DB[5];				//0x3DB
+	bool is_occupied;				//0x3E0
+	bool is_occupied_by_player;		//0x3E1
+	char pad_3E2[15150];			//0x3E2
+
+
+
+	//CMETHODV(0x1405AE1F0, 0x1421E2E85, double, GetFuelAmount()) // Updated
 };
+
+MMASSERT(CVehicle, 0x3F10);
+MMASSERT(CArcadeVehicleEngine, 0x30);

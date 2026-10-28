@@ -63,4 +63,6 @@ public:
     virtual void SetWaterLevel(float) = 0;
     virtual CVector3f*  GetPointClosestTo(CVector3f* result, const CVector3f*, int) = 0;
     virtual void InitBuoyancy() = 0;
-}; 
+};
+
+MMASSERT(IPhysicsGameObjectListenable, 0x8);

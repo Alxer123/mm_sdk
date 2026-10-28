@@ -2,6 +2,24 @@
 
 #include "mm/mm.h"
 
+enum EUpdateType : uint32_t
+{
+    UpdateTypeNone = 0x0,
+    UpdateTypePreSim = 0x1,
+    UpdateTypePostSim = 0x2,
+    UpdateTypeRender = 0x4,
+    UpdateTypePreSimAndPostSim = 0x3,
+    UpdateTypePreSimAndRender = 0x5,
+    UpdateTypePostSimAndRender = 0x6,
+    UpdateTypeAll = 0x7,
+};
+
+class CSaveInfo {
+    unsigned int m_WorldSaveIndex;
+    CHashString m_MissionID;
+};
+
+
 class SResourceCache;
 
 class SObjectIDData
@@ -72,6 +90,17 @@ public:
     virtual void InitTransform(CMatrix const&) = 0;
     virtual void SetTransform(CMatrix* world_CMatrix) = 0;
     virtual bool GetTransform(CMatrix* t1) = 0;
+    //virtual void dummy24() = 0;
+    //virtual void dummy25() = 0;
+    //virtual void dummy26() = 0;
+    //virtual void dummy27() = 0;
+    //virtual void dummy28() = 0;
+    //virtual void dummy29() = 0;
+    //virtual void dummy30() = 0;
+    //virtual void dummy31() = 0;
+    //virtual void dummy32() = 0;
+    //virtual void dummy33() = 0;
+    //virtual void SetOpacity(float opacity) = 0;
 
     uint32_t GetNameHash();
     SObjectID GetObjectID();

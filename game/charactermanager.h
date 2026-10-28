@@ -18,6 +18,7 @@ public:
 	char pad_37B8[840];										//0x37B8
 	
 	CMETHODV(0x1400FBF10, 0x141C91250, CCharacter*, GetPlayerCharacter()) //Updated
+	CMETHOD(0x1400FBF30, 0x141C91280, CVector3f&, GetPlayerPos(CVector3f& pPos), &pPos); //Updated
 };
 
 //MMASSERT(CCharacterManager, 0x3B00);

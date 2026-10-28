@@ -7,7 +7,7 @@
 class CEconomyResource : public CGameObject
 {
 public:
-	enum EconomyResourceType : uint16_t
+	enum EEconomyResourceType : uint16_t
 	{
         Water = 0,
         Food = 1,

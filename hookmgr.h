@@ -4,7 +4,7 @@
 
 // MadMax.exe 1.0.3.0
 
-#define ACT_EXE(gog, steam) ( (*(uint64_t*)(0x14192A150) == 0x1c3c00001bf0) ? (gog) : (steam) )
+#define ACT_EXE(gog, steam) (GetModuleHandleA("steam_api64.dll") == nullptr ? (gog) : (steam))
 
 //#define STEAM_BASE_OFFS (0x0) // 0x1447400 ???
 //#define STEAM_BASE (0x140000000)

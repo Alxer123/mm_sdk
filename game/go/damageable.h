@@ -3,6 +3,7 @@
 #include "physgo.h"
 #include "mm/game/events.h"
 #include "mm/game/go/healthblock.h"
+#include "healthbar.h"
 
 class CDamageable : public CPhysicsGameObject, public NEvent::CEventHandler
 {
@@ -37,11 +38,16 @@ public:
 
     bool m_Destroyed;       //0xE8
     bool m_Invulnerable;    //0xE9 
-    char pad_EA[150];       //0xEA
+    bool m_InvulnerableE3;  //0xEA
+    char pad_EA[149];       //0xEB
     float max_health;       //0x180
     float current_health;   //0x184
     float last_health;      //0x188
-    char pad_18C[52];       //0x18C
+    float m_Armor[8];       //0x18C
+    CHashString m_OnlyAcceptDamageFromType; //0x1AC
+    UINT m_DamageFromPlayerTimeStamp;   //0x1B0;
+    char pad_1B4[4];    //0x1B4
+    CHealthbar* m_HealthbarPtr;
 };
 
 MMASSERT(CDamageable, 0x1C0);
